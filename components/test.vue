@@ -1,12 +1,16 @@
 <template>
   <div>
     {{ data }}
+    <div v-if="error">
+      E:{{ error }}
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 const nuxtApp = useNuxtApp()
-const { data } = await useFetch<any>('https://icanhazdadjoke.com/j/0189hNRf2g', {
+const { data, error } = await useFetch<any>('https://icanhazdadjoke.com/j/0189hNRf2g', {
+  key: 'dad-joke',
   headers: {
     Accept: 'application/json'
   },
